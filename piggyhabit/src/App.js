@@ -7,31 +7,7 @@ import AddSavingsForm from "./AddSavingsForm";
 import WithdrawSavingsForm from "./WithdrawSavingsForm";
 import HistoryList from "./HistoryList";
 import GoalProgress from "./GoalProgress";
-
-// PUBLIC_INTERFACE
-function MotivationBanner({ message }) {
-  /** Displays a motivational message */
-  return (
-    <div className="motivation-banner" aria-label="Motivational Message"
-      style={{
-        background: 'linear-gradient(90deg, var(--kavia-orange), #FFF9C4)',
-        color: '#1A1A1A',
-        borderRadius: 8,
-        padding: '12px 20px',
-        margin: '16px 0',
-        fontWeight: 500,
-        fontSize: '1.15rem',
-        textAlign: 'center',
-        minHeight: 40
-      }}>
-      {message}
-    </div>
-  );
-}
-
-/* --- Main PiggyHabit App Container --- */
-
-/* --- Main PiggyHabit App Container --- */
+import MotivationBanner from "./MotivationBanner";
 
 // PUBLIC_INTERFACE
 function App() {
