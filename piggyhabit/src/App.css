@@ -137,27 +137,44 @@ body {
   font-size: 1.1rem;
 }
 
-input[type="number"], input[type="text"], input[type='email'] {
+.add-savings-form,
+.withdraw-savings-form {
   background: var(--background-panel);
+  border: 1.5px solid var(--primary);
+  border-radius: 9px;
+  padding: 15px 18px 10px 18px;
+  margin: 6px 2px;
+  box-shadow: 0 3px 16px #FBC02D16;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input[type="number"], input[type="text"], input[type='email'] {
+  background: var(--background-dark);
   border: 1.6px solid var(--primary);
-  border-radius: 6px;
-  color: var(--text-color);
-  padding: 8px 14px;
-  font-size: 1.08rem;
+  border-radius: 7px;
+  color: var(--primary);
+  padding: 8px 14px 8px 13px;
+  font-size: 1.12rem;
   margin-top: 3px;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   outline: none;
   box-shadow: none;
-  transition: border 0.18s;
+  transition: border 0.18s, background 0.18s;
+  font-weight: 600;
 }
+
 input[type="number"]:focus, input[type="text"]:focus, input[type='email']:focus {
   border-color: var(--accent);
+  background: var(--background-panel);
 }
 
 label {
-  color: var(--secondary);
+  color: var(--primary);
   font-weight: 500;
   font-size: 1rem;
+  margin-bottom: 2px;
 }
 
 .piggy-bank-graphic {
