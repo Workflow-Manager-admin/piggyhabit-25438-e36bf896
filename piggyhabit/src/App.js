@@ -19,7 +19,8 @@ function App() {
   const [balance, setBalance] = useState(0.0);
   const [transactions, setTransactions] = useState([]);
   const [goal, setGoal] = useState(null);
-  const [motivationIdx, setMotivationIdx] = useState(0);
+  // Track a key for "user message change" (incremented on add/withdraw)
+  const [motivationActionKey, setMotivationActionKey] = useState(0);
   // State for tab/pane: 'main' or 'history'
   const [view, setView] = useState('main');
 
@@ -40,7 +41,7 @@ function App() {
       { type: 'add', amount, timestamp: now.toLocaleString() },
       ...list,
     ]);
-    setMotivationIdx(idx => (idx + 1) % motivationalMessages.length);
+    setMotivationActionKey(key => key + 1); // Trigger banner change
   }
 
   // Handler for withdrawing savings
@@ -51,7 +52,7 @@ function App() {
       { type: 'withdraw', amount, timestamp: now.toLocaleString() },
       ...list,
     ]);
-    setMotivationIdx(idx => (idx + 1) % motivationalMessages.length);
+    setMotivationActionKey(key => key + 1); // Trigger banner change
   }
 
   // Handler for setting goal
@@ -117,7 +118,7 @@ function App() {
         <div className="container" style={{ maxWidth: 480, margin: '0 auto', paddingBottom: 32 }}>
           {view === "main" && (
             <>
-              <MotivationBanner message={motivationalMessages[motivationIdx]} />
+              <MotivationBanner messages={motivationalMessages} triggerKey={motivationActionKey} />
 
               {/* PiggyBank graphic visual */}
               <PiggyBankGraphic />
@@ -151,7 +152,4 @@ function App() {
   );
 }
 
-export {
-  App as default,
-  MotivationBanner,
-};
+export default App;
