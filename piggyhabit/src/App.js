@@ -4,78 +4,8 @@ import './App.css';
 import BalanceDisplay from "./BalanceDisplay";
 import PiggyBankGraphic from "./PiggyBankGraphic";
 
-// PUBLIC_INTERFACE
-function AddSavingsForm({ onAdd }) {
-  /** Form to add a savings amount */
-  const [amount, setAmount] = useState('');
-  return (
-    <form
-      className="add-savings-form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        const numAmount = parseFloat(amount);
-        if (numAmount > 0) {
-          onAdd(numAmount);
-          setAmount('');
-        }
-      }}
-      aria-label="Add Savings Form"
-    >
-      <label>
-        Add Amount
-        <input 
-          type="number" 
-          min="0.01" 
-          step="0.01"
-          required 
-          value={amount} 
-          aria-label="Amount to Add"
-          onChange={e => setAmount(e.target.value)}
-        />
-      </label>
-      <button className="btn" type="submit">Add</button>
-    </form>
-  );
-}
-
-// PUBLIC_INTERFACE
-function WithdrawSavingsForm({ balance, onWithdraw }) {
-  /** Form to withdraw a savings amount, preventing overdraft */
-  const [amount, setAmount] = useState('');
-  const [error, setError] = useState('');
-  return (
-    <form
-      className="withdraw-savings-form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        const numAmount = parseFloat(amount);
-        if (numAmount > balance) {
-          setError('Not enough balance!');
-        } else if (numAmount > 0) {
-          setError('');
-          onWithdraw(numAmount);
-          setAmount('');
-        }
-      }}
-      aria-label="Withdraw Savings Form"
-    >
-      <label>
-        Withdraw Amount
-        <input
-          type="number"
-          min="0.01"
-          step="0.01"
-          required
-          value={amount}
-          aria-label="Amount to Withdraw"
-          onChange={e => setAmount(e.target.value)}
-        />
-      </label>
-      <button className="btn" type="submit">Withdraw</button>
-      {error && <div className="form-error" style={{ color: '#FBC02D', marginTop: '0.5em' }}>{error}</div>}
-    </form>
-  );
-}
+import AddSavingsForm from "./AddSavingsForm";
+import WithdrawSavingsForm from "./WithdrawSavingsForm";
 
 // PUBLIC_INTERFACE
 function HistoryList({ transactions }) {
@@ -277,11 +207,8 @@ function App() {
   );
 }
 
-// Export all subcomponents for testing, development, or future composition
 export {
   App as default,
-  AddSavingsForm,
-  WithdrawSavingsForm,
   HistoryList,
   GoalProgress,
   MotivationBanner,
