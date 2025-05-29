@@ -106,3 +106,25 @@ body {
   padding: 12px 24px;
   font-size: 1.1rem;
 }
+
+/* History List styles */
+.history-list {
+  scrollbar-width: thin;
+  scrollbar-color: #FBC02D #222;
+  background: #232323;
+  color: var(--text-color);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.history-list::-webkit-scrollbar {
+  width: 8px;
+  background: #222;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+  background: #FBC02D88;
+  border-radius: 4px;
+}

@@ -94,6 +94,8 @@ function MotivationBanner({ message }) {
 
 /* --- Main PiggyHabit App Container --- */
 
+/* --- Main PiggyHabit App Container --- */
+
 // PUBLIC_INTERFACE
 function App() {
   /**
@@ -105,6 +107,8 @@ function App() {
   const [transactions, setTransactions] = useState([]);
   const [goal, setGoal] = useState(null);
   const [motivationIdx, setMotivationIdx] = useState(0);
+  // State for tab/pane: 'main' or 'history'
+  const [view, setView] = useState('main');
 
   // Motivational message pool (MVP: small, simple)
   const motivationalMessages = [
@@ -142,6 +146,10 @@ function App() {
     setGoal(newGoal);
   }
 
+  // Simple segmented control for tabs
+  const mainTabColor = view === "main" ? "var(--kavia-orange)" : "rgba(255,255,255,0.04)";
+  const historyTabColor = view === "history" ? "var(--kavia-orange)" : "rgba(255,255,255,0.04)";
+
   return (
     <div className="app">
       {/* Navbar */}
@@ -153,32 +161,77 @@ function App() {
         </div>
       </nav>
 
-      {/* Main App Container */}
-      <main style={{ marginTop: 90 }}>
+      {/* Tabs control */}
+      <div style={{
+        display: "flex", justifyContent: "center", gap: 0,
+        marginTop: 80, marginBottom: 12
+      }}>
+        <button
+          className="btn"
+          aria-label="Main view"
+          style={{
+            borderRadius: "10px 0 0 10px",
+            background: mainTabColor,
+            color: view === "main" ? "#1A1A1A" : "var(--text-secondary)",
+            borderRight: "1px solid var(--border-color)",
+            minWidth: 90,
+            transition: "all 0.19s",
+            fontWeight: view === "main" ? 700 : 400,
+          }}
+          onClick={() => setView('main')}
+        >
+          Main
+        </button>
+        <button
+          className="btn"
+          aria-label="View savings history"
+          style={{
+            borderRadius: "0 10px 10px 0",
+            background: historyTabColor,
+            color: view === "history" ? "#1A1A1A" : "var(--text-secondary)",
+            borderLeft: "1px solid var(--border-color)",
+            minWidth: 90,
+            transition: "all 0.19s",
+            fontWeight: view === "history" ? 700 : 400,
+          }}
+          onClick={() => setView('history')}
+        >
+          History
+        </button>
+      </div>
+
+      <main style={{ marginTop: 16 }}>
         <div className="container" style={{ maxWidth: 480, margin: '0 auto', paddingBottom: 32 }}>
-          <MotivationBanner message={motivationalMessages[motivationIdx]} />
+          {view === "main" && (
+            <>
+              <MotivationBanner message={motivationalMessages[motivationIdx]} />
 
-          {/* PiggyBank graphic visual */}
-          <PiggyBankGraphic />
+              {/* PiggyBank graphic visual */}
+              <PiggyBankGraphic />
 
-          {/* Balance display visual */}
-          <BalanceDisplay balance={balance} />
+              {/* Balance display visual */}
+              <BalanceDisplay balance={balance} />
 
-          {/* Add & Withdraw Forms */}
-          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', margin: '18px 0 0', flexWrap: 'wrap' }}>
-            <AddSavingsForm onAdd={handleAdd} />
-            <WithdrawSavingsForm balance={balance} onWithdraw={handleWithdraw} />
-          </div>
+              {/* Add & Withdraw Forms */}
+              <div style={{ display: 'flex', gap: 14, justifyContent: 'center', margin: '18px 0 0', flexWrap: 'wrap' }}>
+                <AddSavingsForm onAdd={handleAdd} />
+                <WithdrawSavingsForm balance={balance} onWithdraw={handleWithdraw} />
+              </div>
 
-          {/* Savings Goal Progress */}
-          <div style={{ margin: '2em 0 1.5em' }}>
-            <GoalProgress goal={goal} balance={balance} onSetGoal={handleSetGoal} />
-          </div>
+              {/* Savings Goal Progress */}
+              <div style={{ margin: '2em 0 1.5em' }}>
+                <GoalProgress goal={goal} balance={balance} onSetGoal={handleSetGoal} />
+              </div>
+            </>
+          )}
 
-          {/* Savings History List */}
-          <section style={{ margin: '1.5em 0 0', borderTop: '1px solid var(--border-color)', paddingTop: 14 }}>
-            <HistoryList transactions={transactions} />
-          </section>
+          {view === "history" && (
+            <section aria-label="Savings History" style={{
+              borderTop: '1px solid var(--border-color)', paddingTop: 20, marginTop: 12
+            }}>
+              <HistoryList transactions={transactions} />
+            </section>
+          )}
         </div>
       </main>
     </div>
@@ -187,7 +240,6 @@ function App() {
 
 export {
   App as default,
-  HistoryList,
   GoalProgress,
   MotivationBanner,
 };
