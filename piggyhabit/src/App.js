@@ -6,29 +6,7 @@ import PiggyBankGraphic from "./PiggyBankGraphic";
 
 import AddSavingsForm from "./AddSavingsForm";
 import WithdrawSavingsForm from "./WithdrawSavingsForm";
-
-// PUBLIC_INTERFACE
-function HistoryList({ transactions }) {
-  /** Lists all savings and withdrawal transactions */
-  if (!transactions.length) {
-    return <div className="history-list" aria-label="No Transactions">No savings/withdrawals yet.</div>;
-  }
-  return (
-    <div className="history-list" aria-label="Savings History">
-      <h3>Savings History</h3>
-      <ul>
-        {transactions.map((tx, idx) => (
-          <li key={idx} style={{marginBottom: '8px'}}>
-            <span style={{ fontWeight: 500, color: tx.type === 'add' ? '#FBC02D' : '#E65100' }}>
-              {tx.type === 'add' ? '+' : '-'}¥{tx.amount.toFixed(2)}
-            </span>{" "}
-            <span style={{color: '#FFF9C4', fontSize: '0.9em'}}>{tx.timestamp}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+import HistoryList from "./HistoryList";
 
 // PUBLIC_INTERFACE
 function GoalProgress({ goal, balance, onSetGoal }) {
