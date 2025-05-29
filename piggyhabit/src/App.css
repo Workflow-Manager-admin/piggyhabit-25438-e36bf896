@@ -1,3 +1,11 @@
+/**
+ * PiggyHabit App Theme - CSS Variables and Brand Palette
+ * - Primary:   #FBC02D (main yellow)
+ * - Secondary: #FFF9C4 (light yellow)
+ * - Accent:    #E65100 (deep/orange accent)
+ * - Background: #191512 (almost-black), #262015 (panels)
+ * - Text:      #FFF9C4 (main), #FFF176cc (secondary, semi-transparent yellow)
+ */
 :root {
   --primary: #FBC02D;
   --secondary: #FFF9C4;
