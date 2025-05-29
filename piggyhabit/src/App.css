@@ -1,11 +1,27 @@
 /**
- * PiggyHabit App Theme - CSS Variables and Brand Palette
- * - Primary:   #FBC02D (main yellow)
- * - Secondary: #FFF9C4 (light yellow)
- * - Accent:    #E65100 (deep/orange accent)
- * - Background: #191512 (almost-black), #262015 (panels)
- * - Text:      #FFF9C4 (main), #FFF176cc (secondary, semi-transparent yellow)
+ * PiggyHabit App Theme - CSS Variables, Font Stack, and Brand Palette
+ * 
+ * Fonts:
+ *   - Primary: 'Baloo 2', 'Montserrat', 'Quicksand', Arial, sans-serif
+ *   - Import via Google Fonts (see below)
+ *
+ * Palette:
+ *   - Primary:   #FBC02D (main yellow)
+ *   - Secondary: #FFF9C4 (light yellow)
+ *   - Accent:    #E65100 (deep/orange accent)
+ *   - Background: #191512 (almost-black), #262015 (panels)
+ *   - Text:      #FFF9C4 (main), #FFF176cc (secondary, semi-transparent yellow)
+ *   - Green confirmation: #259d32, Red warning: #9d2525
+ *
+ * For maintainability:
+ *   1. All main UI font-families should inherit from :root.
+ *   2. Use primary/secondary/accent for key actions, highlights, backgrounds.
+ *   3. Heading, logo, and button fonts are 'Baloo 2' for extra playfulness.
  */
+
+/* Google Fonts import for 'Baloo 2', 'Montserrat', 'Quicksand' */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Montserrat:wght@400;700&family=Quicksand:wght@400;700&display=swap');
+
 :root {
   --primary: #FBC02D;
   --secondary: #FFF9C4;
@@ -13,20 +29,246 @@
   --kavia-orange: #E87A41; /* For compatibility, used for UI cues */
   --kavia-dark: #1A1A1A;
   --text-color: #FFF9C4;
-  --text-secondary: #FFF176cc; /* Soft yellow for secondary text */
+  --text-secondary: #FFF176cc;
   --border-color: #ffe08233;
   --background-dark: #191512;
   --background-panel: #262015;
+  --confirm-green: #259d32;
+  --error-red: #9d2525;
+  --fun-font: 'Baloo 2', 'Montserrat', 'Quicksand', Arial, sans-serif;
 }
 
+/* Apply the fun, playful font globally */
 body {
   margin: 0;
-  font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: var(--fun-font);
   background-color: var(--background-dark);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Enhance readability */
+  font-size: 1.08rem;
+  letter-spacing: 0.01em;
 }
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background-dark);
+}
+
+/* Navigation Bar Styling */
+.navbar {
+  background: linear-gradient(90deg, var(--background-dark) 55%, var(--accent) 120%);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--primary);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 100;
+  min-height: 58px;
+  box-shadow: 0 2px 12px 0 #00000019;
+}
+
+.logo {
+  font-size: 1.65rem;
+  font-family: var(--fun-font);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 2px;
+  color: var(--primary);
+  text-shadow: 0 1px 10px #FBC02D26, 0 2px 5px #1915121a;
+}
+
+.logo-symbol {
+  color: var(--primary);
+  margin-right: 2px;
+  filter: drop-shadow(0 0 3px var(--accent));
+  font-size: 1.35em;
+}
+
+/* Container Styles */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hero and Main Area */
+.hero {
+  padding-top: 120px;
+  padding-bottom: 64px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.subtitle {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.25rem;
+  font-family: var(--fun-font);
+  text-shadow: 0 1px 8px #FBC02D23;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.09;
+  margin: 0;
+  color: var(--primary);
+  font-family: var(--fun-font);
+  text-shadow: 0 2px 16px #E6510050, 0 1px 3px #FFF9C480;
+}
+
+.description {
+  font-size: 1.13rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin-bottom: 16px;
+  font-family: var(--fun-font);
+}
+
+/* Primary Button Styles */
+.btn {
+  background: linear-gradient(90deg, var(--primary) 60%, var(--accent) 140%);
+  color: var(--background-dark);
+  border: none;
+  border-radius: 10px;
+  padding: 11px 24px;
+  font-size: 1.065rem;
+  font-family: var(--fun-font);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.22s, color 0.17s, box-shadow 0.18s;
+  letter-spacing: 0.7px;
+  box-shadow: 0 2px 12px #FBC02D2c, 0 1.5px 8px #E6510022;
+  outline: none;
+  margin-bottom: 3px;
+}
+.btn:focus {
+  outline: 3px solid var(--primary);
+  outline-offset: 1.5px;
+}
+.btn:hover, .btn:active {
+  background: linear-gradient(92deg, var(--accent) 56%, var(--primary) 146%);
+  color: var(--secondary);
+  box-shadow: 0 4px 18px #FBC02D33, 0 1.5px 8px #E6510033;
+}
+
+.btn-large {
+  padding: 15px 30px;
+  font-size: 1.19rem;
+}
+
+/* Forms for Added/Withdraw Savings */
+.add-savings-form,
+.withdraw-savings-form {
+  background: var(--background-panel);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 17px 22px 11px 22px;
+  margin: 7px 2px;
+  box-shadow: 0 3px 17px #FBC02D13;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: var(--fun-font);
+}
+
+input[type="number"], input[type="text"], input[type='email'] {
+  background: var(--background-dark);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  color: var(--primary);
+  padding: 9px 15px 8px 15px;
+  font-size: 1.13rem;
+  margin-top: 3px;
+  margin-bottom: 11px;
+  outline: none;
+  box-shadow: none;
+  font-family: var(--fun-font);
+  font-weight: 600;
+  transition: border 0.16s, background 0.16s;
+}
+
+input[type="number"]:focus, input[type="text"]:focus, input[type='email']:focus {
+  border-color: var(--accent);
+  background: var(--background-panel);
+}
+
+label {
+  color: var(--primary);
+  font-weight: 600;
+  font-family: var(--fun-font);
+  font-size: 1.045rem;
+  margin-bottom: 2px;
+}
+
+.piggy-bank-graphic {
+  background: linear-gradient(105deg, #fffde733 6%, #FBC02D14 70%, #E651001a 114%);
+  border-radius: 22px;
+  min-height: 83px;
+  margin-bottom: 13px;
+  box-shadow: 0 2px 24px #FBC02D1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HISTORY + LIST STYLES */
+.history-list {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) #2a220f;
+  background: var(--background-panel);
+  color: var(--text-color);
+  border-radius: 10px;
+  border: 1.7px solid var(--border-color);
+  margin: 0 auto;
+  width: 100%;
+  font-family: var(--fun-font);
+}
+.history-list::-webkit-scrollbar {
+  width: 8px;
+  background: #2a220f;
+}
+.history-list::-webkit-scrollbar-thumb {
+  background: #FBC02D93;
+  border-radius: 4px;
+}
+
+/* Additional: better error and confirm colors */
+.form-error {
+  color: var(--primary);
+  font-weight: 700;
+  font-family: var(--fun-font);
+  font-size: 1em;
+  margin-top: 0.5em;
+  letter-spacing: 0.5px;
+}
+
+.motivation-banner {
+  font-family: var(--fun-font);
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: 2px solid var(--primary);
+  box-shadow: 0 3px 18px #FBC02D12;
+}
+
+/* Savings goal/progress area consistency tweaks could be added here if needed */
+
 
 .app {
   min-height: 100vh;
