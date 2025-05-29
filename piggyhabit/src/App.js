@@ -3,38 +3,7 @@ import './App.css';
 
 /* --- Placeholder Components for All Main Features --- */
 
-// PUBLIC_INTERFACE
-function BalanceDisplay({ balance }) {
-  /** Displays the user's current balance */
-  return (
-    <div className="balance-display" aria-label="Current Balance">
-      <h2 className="balance-title">Your Balance</h2>
-      <div className="balance-amount">¥ {balance.toFixed(2)}</div>
-    </div>
-  );
-}
-
-// PUBLIC_INTERFACE
-function PiggyBankGraphic() {
-  /** Simple SVG illustration of a piggy bank */
-  return (
-    <div className="piggy-bank-graphic" aria-label="Piggy Bank Graphic">
-      {/* Placeholder SVG; replace/customize for branding */}
-      <svg viewBox="0 0 120 80" width="100" height="65" style={{ margin: '0 auto', display: 'block' }}>
-        <ellipse cx="60" cy="45" rx="42" ry="28" fill="#FBC02D" stroke="#E65100" strokeWidth="3"/>
-        <ellipse cx="87" cy="41" rx="8" ry="6.5" fill="#FFF9C4" stroke="#E65100" strokeWidth="2"/>
-        <ellipse cx="33" cy="41" rx="8" ry="6.5" fill="#FFF9C4" stroke="#E65100" strokeWidth="2"/>
-        <ellipse cx="60" cy="30" rx="11" ry="5" fill="#E65100" opacity="0.18"/>
-        {/* Slot */}
-        <rect x="51" y="32" width="18" height="5" rx="2" fill="#333" opacity="0.18"/>
-        {/* Tail */}
-        <path d="M 103 54 Q 116 59 104 64 Q 119 66 108 60" stroke="#E65100" strokeWidth="2" fill="none"/>
-        {/* Eye */}
-        <circle cx="86.5" cy="41" r="1.3" fill="#333" />
-      </svg>
-    </div>
-  );
-}
+/* Removed in-file BalanceDisplay and PiggyBankGraphic as they're now external components */
 
 // PUBLIC_INTERFACE
 function AddSavingsForm({ onAdd }) {
