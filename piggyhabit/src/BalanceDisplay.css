@@ -1,26 +1,29 @@
 .balance-display {
-  background: linear-gradient(92deg, #FBC02D11 0%, #E6510017 140%);
-  border-radius: 14px;
+  background: linear-gradient(92deg, #FBC02D16 0%, #E651001c 140%);
+  border-radius: 16px;
   box-shadow: 0 4px 24px #FBC02D27;
-  padding: 26px 0 18px 0;
-  margin-bottom: 8px;
+  padding: 29px 0 20px 0;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: var(--fun-font);
 }
 
 .balance-title {
-  font-size: 1.22rem;
-  font-weight: 600;
+  font-size: 1.189rem;
+  font-weight: 700;
   color: var(--secondary);
-  text-shadow: 0 1px 16px #E6510045;
-  margin-bottom: 4px;
+  text-shadow: 0 1px 17px #E6510043;
+  margin-bottom: 5px;
+  font-family: var(--fun-font);
 }
 
 .balance-amount {
   color: var(--primary);
-  font-weight: 800;
-  font-size: 2.8rem;
-  letter-spacing: 0.5px;
-  text-shadow: 0 2px 18px #FBC02D33, 0 5px 40px #1A1A1A48;
+  font-weight: 900;
+  font-family: var(--fun-font);
+  font-size: 2.95rem;
+  letter-spacing: 0.75px;
+  text-shadow: 0 2px 18px #FBC02D34, 0 5px 40px #1A1A1A48;
 }
