@@ -1,9 +1,14 @@
 :root {
-  --kavia-orange: #E87A41;
+  --primary: #FBC02D;
+  --secondary: #FFF9C4;
+  --accent: #E65100;
+  --kavia-orange: #E87A41; /* For compatibility, used for UI cues */
   --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
+  --text-color: #FFF9C4;
+  --text-secondary: #FFF176cc; /* Soft yellow for secondary text */
+  --border-color: #ffe08233;
+  --background-dark: #191512;
+  --background-panel: #262015;
 }
 
 body {
