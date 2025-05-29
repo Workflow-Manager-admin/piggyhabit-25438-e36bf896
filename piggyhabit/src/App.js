@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
-/* --- Placeholder Components for All Main Features --- */
-
-/* Removed in-file BalanceDisplay and PiggyBankGraphic as they're now external components */
+import BalanceDisplay from "./BalanceDisplay";
+import PiggyBankGraphic from "./PiggyBankGraphic";
 
 // PUBLIC_INTERFACE
 function AddSavingsForm({ onAdd }) {
@@ -281,8 +280,6 @@ function App() {
 // Export all subcomponents for testing, development, or future composition
 export {
   App as default,
-  BalanceDisplay,
-  PiggyBankGraphic,
   AddSavingsForm,
   WithdrawSavingsForm,
   HistoryList,

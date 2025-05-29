@@ -106,3 +106,9 @@ src/App.js
   Line 284:2:  Parsing error: Export 'BalanceDisplay' is not defined. (284:2)
 
 webpack compiled with 2 errors
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
