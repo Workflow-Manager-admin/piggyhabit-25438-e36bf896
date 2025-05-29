@@ -250,9 +250,11 @@ function App() {
       <main style={{ marginTop: 90 }}>
         <div className="container" style={{ maxWidth: 480, margin: '0 auto', paddingBottom: 32 }}>
           <MotivationBanner message={motivationalMessages[motivationIdx]} />
-          
+
+          {/* PiggyBank graphic visual */}
           <PiggyBankGraphic />
 
+          {/* Balance display visual */}
           <BalanceDisplay balance={balance} />
 
           {/* Add & Withdraw Forms */}
