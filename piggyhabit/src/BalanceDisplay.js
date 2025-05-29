@@ -1,4 +1,5 @@
 import React from "react";
+import "./BalanceDisplay.css";
 
 // PUBLIC_INTERFACE
 function BalanceDisplay({ balance = 0 }) {

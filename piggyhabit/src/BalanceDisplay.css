@@ -1,0 +1,26 @@
+.balance-display {
+  background: linear-gradient(92deg, #FBC02D11 0%, #E6510017 140%);
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #FBC02D27;
+  padding: 26px 0 18px 0;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.balance-title {
+  font-size: 1.22rem;
+  font-weight: 600;
+  color: var(--secondary);
+  text-shadow: 0 1px 16px #E6510045;
+  margin-bottom: 4px;
+}
+
+.balance-amount {
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 2.8rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 18px #FBC02D33, 0 5px 40px #1A1A1A48;
+}
